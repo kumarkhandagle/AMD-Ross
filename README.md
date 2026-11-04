@@ -104,3 +104,33 @@ An MCP server can expose RAG capabilities by connecting an AI application to a s
 However, **MCP alone does not automatically provide RAG**. Whether an operation qualifies as RAG depends on how the retrieved information is used.
 
 In our setup, **AMD Ross provides documentation retrieval through MCP**, allowing Gemini to use AMD technical documentation as an external knowledge source when generating answers.
+
+
+
+```mermaid
+flowchart TD
+    A["Vivado User Guides and AMD Documentation"]
+    B["Text Extraction and Chunking"]
+    C["Embedding Model"]
+    D["Weaviate Documentation Database"]
+    E["AMD Ross Documentation MCP Server"]
+    F["vivado_doc_search"]
+    G["Gemini in Google Antigravity"]
+    H["User Question"]
+    I["Retrieved Documentation"]
+    J["Generated Answer"]
+
+    A --> B
+    B --> C
+    C --> D
+
+    H --> G
+    G --> F
+    F --> E
+    E --> D
+    D --> I
+    I --> E
+    E --> G
+    G --> J
+```
+
