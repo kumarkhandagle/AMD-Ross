@@ -13,8 +13,11 @@ The materials are organized section-wise so that learners can easily locate the 
 | 3 | Getting Started with RTL Linting | [Section-3](./Section-3/) |
 | 4 | Behavioral Simulation and RTL Debugging with Verilog and UVM | [Section-4](./Section-4/) |
 | 5 | Code Coverage Analysis and Improvement | [Section-5](./Section-5/) |
+| 6 | Synthesis & Gate Netlist | [Section-6](./Section-6/) |
+| 7 | Implementation & Timings | [Section-7](./Section-7/) |
+| 8 | Bitstream | [Section-8](./Section-8/) |
 
-Additional section folders will be linked here as their source files are published.
+Section folders and materials will become available as the corresponding course content is published.
 
 ## How to use the files
 
