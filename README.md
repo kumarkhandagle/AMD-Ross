@@ -1,136 +1,40 @@
-# MCP vs. RAG: Understanding the Difference
+# AMD Ross Course – Source Codes
 
-## 1. What Are MCP and RAG?
+This folder contains the source files and supporting examples used in the hands-on demonstrations of the **AMD Ross for FPGA Design and Verification** course by **Namaste FPGA**.
 
-**MCP (Model Context Protocol)** defines how an AI application connects to external tools and data sources.
+The materials are organized section-wise so that learners can easily locate the files corresponding to each lecture, reproduce the demonstrations in AMD Vivado, and complete the practical assignments using AMD Ross.
 
-**RAG (Retrieval-Augmented Generation)** is a technique for retrieving relevant information from external knowledge sources and supplying it to a Large Language Model (LLM) before generating an answer.
+## Section-wise code directory
 
-**Key Difference:**
-- **MCP:** Provides a standardized mechanism for connecting AI applications to external tools and data sources.
-- **RAG:** Enables an LLM to generate answers using retrieved information.
-
-## 2. Example: AMD Ross with Google Antigravity
-
-In our Google Antigravity setup, we configured the following MCP server:
-
-```json
-{
-  "mcpServers": {
-    "amd-doc-search": {
-      "serverUrl": "https://ross.amd.com/mcp/doc-search"
-    }
-  }
-}
-```
-
-This configuration connects Gemini to the **AMD Ross documentation-search MCP server**, which exposes the `vivado_doc_search` tool.
-
-The tool allows Gemini to search AMD technical documentation and retrieve relevant information, supporting a **RAG workflow**.
-
-## 3. Why Is RAG Useful?
-
-**Without RAG:**
-
-An LLM primarily relies on its training knowledge and any context provided in the conversation.
-
-**With RAG:**
-
-An LLM can retrieve information from external sources, such as technical documentation, and use that information when generating an answer.
-
-This provides several benefits:
-
-- Access to more precise, domain-specific technical information.
-- Ability to retrieve documentation that may be newer than the LLM's training knowledge.
-- Reduced dependence on the LLM's internal knowledge when answering technical questions.
-
-> **Important:** RAG does not retrain or modify the LLM. It supplies relevant information at the time a question is answered.
-
-### RAG Workflow with AMD Ross
-
-1. The user asks Gemini a question about Vivado.
-2. Gemini invokes `vivado_doc_search` through the AMD Ross MCP server.
-3. The tool retrieves relevant passages from AMD documentation.
-4. Gemini uses the retrieved information as additional context.
-5. Gemini generates an answer based on the available context.
-
-
-
-```mermaid
-flowchart TD
-    A["User Question: What does NEEDS_REFRESH mean in Vivado 2025.2?"]
-    B["Retrieval: AMD Ross searches relevant AMD documentation"]
-    C["Augmentation: Retrieved documentation is supplied to Gemini"]
-    D["Generation: Gemini explains NEEDS_REFRESH using retrieved information"]
-
-    A --> B
-    B --> C
-    C --> D
-```
-
-## 4. Does Every MCP Server Provide RAG?
-
-**No.** MCP servers can expose different capabilities, and not every MCP operation involves retrieval-augmented generation.
-
-Consider these two MCP servers:
-
-| MCP Server | Capability | RAG? |
+| Section | Course topic | Source-code folder |
 |---|---|---|
-| `amd-doc-search` | Searches AMD documentation and returns relevant information | Yes, when retrieved content is used to generate an answer |
-| `vivado-mcp-server` | Executes supported Vivado operations and retrieves tool results | Not inherently |
+| 1 | AMD Ross Setup and Configuration | [Section-1](./Section-1/) |
+| 2 | Vivado Project Management with AMD Ross | [Section-2](./Section-2/) |
+| 3 | Getting Started with RTL Linting | [Section-3](./Section-3/) |
+| 4 | Behavioral Simulation and RTL Debugging with Verilog and UVM | [Section-4](./Section-4/) |
+| 5 | Code Coverage Analysis and Improvement | [Section-5](./Section-5/) |
 
-### Example 1: Vivado Tool Execution (Not RAG)
+Additional section folders will be linked here as their source files are published.
 
-Suppose Gemini invokes `report_utilization` through the Vivado MCP server.
+## How to use the files
 
-The MCP server executes the Vivado command and returns utilization results.
+1. Open the section folder corresponding to the lecture you are following.
+2. Download the required files, or clone the repository:
 
-This is **tool execution**, not RAG, because the operation does not inherently involve retrieving knowledge from an external documentation source to augment the LLM's answer.
+   ```bash
+   git clone https://github.com/kumarkhandagle/AMD-Ross.git
+   ```
 
-### Example 2: AMD Documentation Search (RAG)
+3. Open the supplied Vivado project, if available, or create a new project and add the relevant RTL files as **Design Sources** and testbench files as **Simulation Sources**.
+4. Follow the lecture to run the appropriate workflow using **AMD Ross**, **Google Antigravity**, and **AMD Vivado**.
+5. For assignments, apply your changes to a separate working copy so that the original course files remain available for comparison.
 
-Suppose Gemini invokes `vivado_doc_search` to find information about Vivado timing constraints.
+## Important notes
 
-The AMD Ross MCP server retrieves relevant documentation, and Gemini uses that information to generate an answer.
+- Some examples intentionally contain RTL bugs or incomplete implementations for debugging demonstrations. A source file should not automatically be treated as a fully corrected reference design.
+- The exact tool configuration, FPGA part, simulation top module, and any UVM library requirements depend on the corresponding lecture.
+- Generated simulation files, logs, and synthesis reports may differ across Vivado versions and local environments.
+- Preserve copyright and license notices included in individual source files.
 
-This is a **RAG workflow** because external knowledge is retrieved and incorporated into the LLM's response.
-
-## 5. Key Takeaway for Students
-
-> **MCP is the communication mechanism; RAG is the knowledge-retrieval technique.**
-
-An MCP server can expose RAG capabilities by connecting an AI application to a suitable retrieval system.
-
-However, **MCP alone does not automatically provide RAG**. Whether an operation qualifies as RAG depends on how the retrieved information is used.
-
-In our setup, **AMD Ross provides documentation retrieval through MCP**, allowing Gemini to use AMD technical documentation as an external knowledge source when generating answers.
-
-
-
-```mermaid
-flowchart TD
-    A["Vivado User Guides and AMD Documentation"]
-    B["Text Extraction and Chunking"]
-    C["Embedding Model"]
-    D["Weaviate Documentation Database"]
-    E["AMD Ross Documentation MCP Server"]
-    F["vivado_doc_search"]
-    G["Gemini in Google Antigravity"]
-    H["User Question"]
-    I["Retrieved Documentation"]
-    J["Generated Answer"]
-
-    A --> B
-    B --> C
-    C --> D
-
-    H --> G
-    G --> F
-    F --> E
-    E --> D
-    D --> I
-    I --> E
-    E --> G
-    G --> J
-```
-
+**Course provider:** [Namaste FPGA](https://namaste-fpga.com/courses)  
+**Repository:** [AMD-Ross](https://github.com/kumarkhandagle/AMD-Ross)
