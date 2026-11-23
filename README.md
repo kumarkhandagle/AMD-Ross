@@ -1,21 +1,22 @@
 # AMD Ross Course – Source Codes
 
-This folder contains the source files and supporting examples used in the hands-on demonstrations of the **AMD Ross for FPGA Design and Verification** course by **Namaste FPGA**.
+This folder contains the source files and supporting examples used in the hands-on demonstrations of the **AMD Ross for FPGA Design and Verification** course by 
+[Namaste FPGA](https://namaste-fpga.com/courses).
 
 The materials are organized section-wise so that learners can easily locate the files corresponding to each lecture, reproduce the demonstrations in AMD Vivado, and complete the practical assignments using AMD Ross.
 
 ## Section-wise code directory
 
-| Section | Course topic | Source-code folder |
-|---|---|---|
-| 1 | AMD Ross Setup and Configuration | [Section-1](./Section-1/) |
-| 2 | Vivado Project Management with AMD Ross | [Section-2](./Section-2/) |
-| 3 | Getting Started with RTL Linting | [Section-3](./Section-3/) |
-| 4 | Behavioral Simulation and RTL Debugging with Verilog and UVM | [Section-4](./Section-4/) |
-| 5 | Code Coverage Analysis and Improvement | [Section-5](./Section-5/) |
-| 6 | Synthesis & Gate Netlist | [Section-6](./Section-6/) |
-| 7 | Implementation & Timings | [Section-7](./Section-7/) |
-| 8 | Bitstream | [Section-8](./Section-8/) |
+| Section | Course topic |
+|---|---|
+| 1 | AMD Ross Setup and Configuration |
+| 2 | Vivado Project Management with AMD Ross |
+| 3 | Getting Started with RTL Linting |
+| 4 | Behavioral Simulation and RTL Debugging with Verilog and UVM |
+| 5 | Code Coverage Analysis and Improvement |
+| 6 | Synthesis & Gate Netlist |
+| 7 | Implementation & Timings |
+| 8 | Bitstream |
 
 Section folders and materials will become available as the corresponding course content is published.
 
@@ -39,5 +40,5 @@ Section folders and materials will become available as the corresponding course 
 - Generated simulation files, logs, and synthesis reports may differ across Vivado versions and local environments.
 - Preserve copyright and license notices included in individual source files.
 
-**Course provider:** [Namaste FPGA](https://namaste-fpga.com/courses)  
+**Course provider:** Namaste FPGA  
 **Repository:** [AMD-Ross](https://github.com/kumarkhandagle/AMD-Ross)
