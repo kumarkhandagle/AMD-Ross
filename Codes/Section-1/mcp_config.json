@@ -1,0 +1,17 @@
+
+{
+  "mcpServers": {
+    "amd-doc-search": {
+      "serverUrl": "https://ross.amd.com/mcp/doc-search"
+    },
+    "vivado-mcp": {
+      "command": "Absolute Path of vivado-mcp-server-windows-amd64-2026.10.1.exe",
+      "args": [
+        "--stdio-bridge"
+      ],
+      "env": {
+        "VIVADO_PATH": "Absolute Path of vivado.bat"
+      }
+    }
+  }
+}
